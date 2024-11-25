@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -34,6 +35,8 @@ class _QrCodeScreenState extends State<QrCodeScreen> {
     return Scaffold(
       body: Container(
         alignment: Alignment.center,
+        height: double.infinity,
+        width: double.infinity,
         child: Stack(
           children: [
             Positioned.fill(
@@ -42,10 +45,7 @@ class _QrCodeScreenState extends State<QrCodeScreen> {
                 child: SizedBox(
                   height: _controller.value.size.height,
                   width: _controller.value.size.width,
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(15),
-                    child: VideoPlayer(_controller),
-                  ),
+                  child: VideoPlayer(_controller),
                 ),
               ),
             ),
@@ -126,13 +126,32 @@ class _QrCodeScreenState extends State<QrCodeScreen> {
                       height: 8,
                     ),
                     BaseElevatedButton(
-                      text: "Наш сайт",
-                      onPressed: () {},
-                    )
+                      text: "Наш адрес",
+                      onPressed: () async {
+                        const url = 'https://2gis.ru/kh_mansiysk/firm/70000001049856792';
+                        if (await canLaunchUrlString(url)) {
+                          await launchUrlString(url);
+                        }
+                      },
+                    ),
                   ],
                 ),
               ),
             ),
+            // Align(
+            //   alignment: Alignment.bottomCenter,
+            //   child: Padding(
+            //     padding: const EdgeInsets.only(bottom: 16.0),
+            //     child: CupertinoButton(
+            //         onPressed: () async {
+            //           const url = 'https://2gis.ru/kh_mansiysk/firm/70000001049856792';
+            //           if (await canLaunchUrlString(url)) {
+            //             await launchUrlString(url);
+            //           }
+            //         },
+            //         child: const Text('Гагарина 88А')),
+            //   ),
+            // )
           ],
         ),
       ),
