@@ -21,11 +21,7 @@ class _PreviewWidgetState extends State<PreviewWidget> {
 
         setState(() {});
       });
-    // _controller = VideoPlayerController.asset('assets/video/prewiew.mp4')
-    //   ..initialize().then((_) {
-    //     _controller.play();
-    //     setState(() {});
-    //   });
+
     super.initState();
   }
 
@@ -64,4 +60,3 @@ class _PreviewWidgetState extends State<PreviewWidget> {
     );
   }
 }
-
